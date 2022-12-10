@@ -9,6 +9,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -35,7 +36,7 @@ public class Train implements Serializable {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "train")
     @JsonIgnore
     @ToString.Exclude
-     private Set<Client> clients ;
+     private List<Client> clients ;
 
     @ManyToOne
     private Gare GareDepart ;

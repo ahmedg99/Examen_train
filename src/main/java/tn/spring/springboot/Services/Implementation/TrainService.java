@@ -96,7 +96,13 @@ public class TrainService implements ITrainService {
         Gare gare = gareRepository.findById(idGareDepart).get();
          Train train = trainRepository.findTrainByDateArriveeAndgAndGareDepart(gare.getNom(),heureDepart) ;
         // train.setNbPlaceLibre((int)train.getClients().stream().count());
+        for (int i=0 ; i< train.getClients().size();i++) {
+            train.getClients().get(i).setTrain(null);
+            clientRepository.save(train.getClients().get(i)) ;
+
+        }
         train.getClients().clear();
+
        train.setEtat(etatTrain.valueOf("PREVU"));
 
         trainRepository.save(train);
