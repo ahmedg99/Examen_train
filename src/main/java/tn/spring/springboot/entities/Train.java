@@ -1,5 +1,6 @@
 package tn.spring.springboot.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
@@ -25,7 +26,9 @@ public class Train implements Serializable {
     private Long idTrain;
     @Enumerated(EnumType.STRING)
     private etatTrain etat ;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date dateDepart ;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date dateArrivee ;
     private Double  heureDepart  ;
     private Double  heureArrivee  ;

@@ -64,7 +64,6 @@ public class TrainController {
 
 
 
-    @Scheduled(fixedRate = 2000)
     @GetMapping(value = "/ArrivalDateBeforeDateSystem")
      public void ArrivalDateBeforeDateSystem() throws ParseException {
          iTrainService.TrainsEnGare() ;

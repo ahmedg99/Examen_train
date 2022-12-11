@@ -17,8 +17,8 @@ import java.util.List;
 public interface TrainRepository extends JpaRepository<Train , Long > {
 
 
-    @Query("SELECT T FROM Train T WHERE T.GareDepart.nom ='EZZAHRA LYCEE' and T.heureDepart=7.45  and T.GareArrivee.nom ='RADES LYCEE' ")
-    Train findByGareDepartandAndGareArriveeAndHeureArrivee();
+    @Query("SELECT T FROM Train T WHERE T.GareDepart.idGare =:idGareDepart and T.heureDepart=7.45  and T.GareArrivee.nom ='RADES LYCEE' ")
+    Train findByGareDepartandAndGareArriveeAndHeureArrivee(Long idGareDepart);
 
     @Query("SELECT AVG(T.nbPlaceLibre) FROM Train T WHERE T.GareDepart.localisation =:localisation")
     int AvgNbPlacesLibre(@Param("localisation") Ville localisation) ;

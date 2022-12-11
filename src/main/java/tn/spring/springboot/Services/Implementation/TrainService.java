@@ -57,8 +57,7 @@ public class TrainService implements ITrainService {
 
     @Override
     public void affecterTainAClient(Long idClient, Long idGareDepart) {
-        Gare garedepart = gareRepository.findById(idGareDepart).get() ;
-        Train train = trainRepository.findByGareDepartandAndGareArriveeAndHeureArrivee();
+         Train train = trainRepository.findByGareDepartandAndGareArriveeAndHeureArrivee(idGareDepart);
         Client client = clientRepository.findById(idClient).get() ;
         //System.out.println(train);
 
@@ -67,6 +66,7 @@ public class TrainService implements ITrainService {
             clientRepository.save(client);
             train.setNbPlaceLibre((train.getNbPlaceLibre()-1));
             log.info("client ajoutée au train ");
+            trainRepository.save(train);
         }
         else {
             log.info("places non disponibles ");
@@ -102,28 +102,16 @@ public class TrainService implements ITrainService {
 
         }
         train.getClients().clear();
-
-       train.setEtat(etatTrain.valueOf("PREVU"));
-
+        train.setEtat(etatTrain.valueOf("PREVU"));
         trainRepository.save(train);
     }
+
+
+
+   // @Scheduled(fixedRate = 2000)
     @Override
     public void TrainsEnGare()  {
-        /*
-        Date curretndate = new Date();
-        SimpleDateFormat  formater = new SimpleDateFormat("yyyy-MM-dd");
-         String datecurretn = formater.format(curretndate);
-         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(datecurretn);
-         // List<Train> liste = trainRepository.findAll();
-
-       List<Train> liste =  trainRepository.findAll().stream().filter(e->
-
-           e.getDateArrivee().before(date)).collect(Collectors.toList());
-       liste.forEach(t->{ log.info("la liste des train qui ont une date d'arrivée avant la date system sont  :  " + t.toString()  );});
-       // log.info(String.valueOf(date.before(new SimpleDateFormat("yyyy-MM-dd").parse("2001-02-01"))));
-*/
         List<Train> trains = trainRepository.findTrainByDateArriveeBeforeee() ;
-
         for(int i=0 ; i< trains.size();i++) {
             log.info(String.valueOf(trains.get(i).toString()));
         }
