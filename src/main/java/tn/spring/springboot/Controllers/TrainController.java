@@ -65,7 +65,16 @@ public class TrainController {
 
 
     @GetMapping(value = "/ArrivalDateBeforeDateSystem")
-     public void ArrivalDateBeforeDateSystem() throws ParseException {
-         iTrainService.TrainsEnGare() ;
+    public void ArrivalDateBeforeDateSystem() throws ParseException {
+        iTrainService.TrainsEnGare() ;
     }
+
+
+
+    @GetMapping(value = "/ListerTrainsIndirects/{garedepartid}/{garearriveeid}")
+        public List<Train> ListerTrainsIndirects(@PathVariable("garedepartid") Long garedepartid ,@PathVariable("garearriveeid") Long garearriveeid  ) throws ParseException {
+        return iTrainService.ListerTrainsIndirects(garedepartid, garearriveeid);
+    }
+
+
 }

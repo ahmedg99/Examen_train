@@ -42,13 +42,13 @@ public class Train implements Serializable {
      private List<Client> clients ;
 
     @ManyToOne
-    private Gare GareDepart ;
+    private Gare gareDepart ;
 
 
 
 
     @ManyToOne
-     private Gare GareArrivee ;
+     private Gare gareArrivee ;
 
 
     @Override
@@ -56,11 +56,11 @@ public class Train implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Train train = (Train) o;
-        return nbPlaceLibre == train.nbPlaceLibre && Objects.equals(idTrain, train.idTrain) && etat == train.etat && Objects.equals(dateDepart, train.dateDepart) && Objects.equals(dateArrivee, train.dateArrivee) && Objects.equals(heureDepart, train.heureDepart) && Objects.equals(heureArrivee, train.heureArrivee) && Objects.equals(clients, train.clients) && Objects.equals(GareDepart, train.GareDepart) && Objects.equals(GareArrivee, train.GareArrivee);
+        return nbPlaceLibre == train.nbPlaceLibre && Objects.equals(idTrain, train.idTrain) && etat == train.etat && Objects.equals(dateDepart, train.dateDepart) && Objects.equals(dateArrivee, train.dateArrivee) && Objects.equals(heureDepart, train.heureDepart) && Objects.equals(heureArrivee, train.heureArrivee) && Objects.equals(clients, train.clients) && Objects.equals(gareDepart, train.gareDepart) && Objects.equals(gareArrivee, train.gareArrivee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idTrain, etat, dateDepart, dateArrivee, heureDepart, heureArrivee, nbPlaceLibre, clients, GareDepart, GareArrivee);
+        return Objects.hash(idTrain, etat, dateDepart, dateArrivee, heureDepart, heureArrivee, nbPlaceLibre, clients, gareDepart, gareArrivee);
     }
 }

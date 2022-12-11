@@ -1,9 +1,7 @@
 package tn.spring.springboot.Services.Implementation;
 
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.spring.springboot.Services.Interfaces.ITrainService;
 import tn.spring.springboot.entities.Client;
@@ -14,12 +12,7 @@ import tn.spring.springboot.repositories.ClientRepository;
 import tn.spring.springboot.repositories.GareRepository;
 import tn.spring.springboot.repositories.TrainRepository;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -83,12 +76,15 @@ public class TrainService implements ITrainService {
 
     @Override
     public List<Train> ListerTrainsIndirects(Long idGareDepart, Long idGareArrivee) {
-
+/*
         Gare garedepart = gareRepository.findById(idGareDepart).get();
         Gare garearrivee= gareRepository.findById(idGareArrivee).get();
         log.info((trainRepository.trainindirectes(garearrivee.getNom()).toString()));
         List<Train> listetrain = trainRepository.trainindirectes(garearrivee.getNom()) ;
         return listetrain.stream().filter(e->!(e.getGareDepart().getNom().equals(garedepart.getNom()))).collect(Collectors.toList());
+        */
+
+        return trainRepository.findAllByGareDepartIdGareNotAndGareArriveeIdGare(idGareDepart,idGareArrivee);
     }
 
     @Override
