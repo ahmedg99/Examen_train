@@ -14,23 +14,20 @@ public class ClientController {
 
 
     @Autowired
-    IClientService iClientService ;
+    IClientService iClientService;
 
     @GetMapping(value = "/list")
     @ResponseBody
     public List<Client> getAllEtudiants() {
-        return iClientService.afficherClients() ;
+        return iClientService.afficherClients();
     }
 
 
     @PostMapping("/add")
     @ResponseBody
     public void addGare(@RequestBody Client client) {
-     iClientService.AjouterClient(client);
+        iClientService.AjouterClient(client);
     }
-
-
-
 
 
 }

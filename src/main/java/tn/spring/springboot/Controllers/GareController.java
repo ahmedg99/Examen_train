@@ -1,11 +1,8 @@
 package tn.spring.springboot.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import tn.spring.springboot.Services.Implementation.GareServiceImp;
 import tn.spring.springboot.Services.Interfaces.IGare;
-import tn.spring.springboot.entities.Etudiant;
 import tn.spring.springboot.entities.Gare;
 
 import java.util.List;
@@ -15,9 +12,8 @@ import java.util.List;
 public class GareController {
 
 
-
     @Autowired
-    IGare iGare ;
+    IGare iGare;
 
     @PostMapping("/add")
     @ResponseBody
@@ -28,9 +24,8 @@ public class GareController {
     @GetMapping(value = "/list")
     @ResponseBody
     public List<Gare> listGares() {
-        return iGare.ListeGare() ;
+        return iGare.ListeGare();
     }
-
 
 
 }

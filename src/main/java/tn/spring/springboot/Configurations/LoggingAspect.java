@@ -1,10 +1,8 @@
 package tn.spring.springboot.Configurations;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
@@ -13,16 +11,16 @@ import org.springframework.stereotype.Component;
 @Slf4j
 
 public class LoggingAspect {
-    private static final Logger logger =
-             LogManager.getLogger(LoggingAspect.class);
 
-    @After("execution(int tn.spring.springboot.Controllers.*.*(..))")
 
-    public void logMethodEntry(JoinPoint joinPoint) {
+    @Around("execution(int tn.spring.springboot.Services.Implementation.*.*(..))")
+    public Object monitorPerformance(ProceedingJoinPoint joinPoint) throws Throwable {
+        long startTime = System.currentTimeMillis();
+        Object result = joinPoint.proceed();
+        long elapsedTime = System.currentTimeMillis() - startTime;
+        log.info("Method name: " + joinPoint.getSignature().getName());
+        log.info("Execution time: " + elapsedTime + " milliseconds.");
+        return result;
+    }
 
-        String name = joinPoint.getSignature().getName();
-        //logger.de("In method " + name + " : ***********************");
-        logger.debug("In method " + name + " : ");
-
-     }
 }

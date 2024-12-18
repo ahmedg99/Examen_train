@@ -1,5 +1,5 @@
 package tn.spring.springboot.entities;
 
 public enum etatTrain {
-    PREVU , EN_GARE, EN_ROUTE , ANNULE
+    PREVU, EN_GARE, EN_ROUTE, ANNULE
 }

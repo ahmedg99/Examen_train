@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface IGare {
     public Gare addGare(Gare gare);
-    public List<Gare> ListeGare() ;
- }
+
+    public List<Gare> ListeGare();
+}

@@ -15,14 +15,13 @@ public class GareServiceImp implements IGare {
 
 
     @Autowired
-    GareRepository gareRepository ;
+    GareRepository gareRepository;
 
 
     @Override
     public Gare addGare(Gare gare) {
-        gareRepository.save(gare);
-        log.info("gare ajoutée");
-        return  gareRepository.save(gare);
+        log.info("La Gare " + gare.getNom() + " est ajoutée avec succès");
+        return gareRepository.save(gare);
     }
 
     @Override

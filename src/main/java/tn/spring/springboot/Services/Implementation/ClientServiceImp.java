@@ -14,13 +14,13 @@ import java.util.List;
 public class ClientServiceImp implements IClientService {
 
     @Autowired
-    ClientRepository clientRepository ;
+    ClientRepository clientRepository;
 
 
     @Override
     public Long AjouterClient(Client C) {
-          clientRepository.save(C);
-        log.info("ajouter client");
+        clientRepository.save(C);
+        log.info("Le Client" + C.getNomClient() + " est ajouté avec succès");
         return C.getIdClient();
     }
 
